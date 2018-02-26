@@ -9,14 +9,14 @@
        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
         ">
 
-    <task:annotation-driven/>
+    <!--<task:annotation-driven/>-->
 
-    <task:scheduled-tasks scheduler="myScheduler">
-        <task:scheduled ref="xmlTask" method="scheduler" cron="0/2 * * * * ?"/>
-        <task:scheduled ref="xmlTask" method="scheduler2" fixed-delay="2000"/>
-    </task:scheduled-tasks>
-    <task:scheduler id="myScheduler"/>
+    <!--<task:scheduled-tasks scheduler="myScheduler">-->
+        <!--<task:scheduled ref="xmlTask" method="scheduler" cron="0/2 * * * * ?"/>-->
+        <!--<task:scheduled ref="xmlTask" method="scheduler2" fixed-delay="2000"/>-->
+    <!--</task:scheduled-tasks>-->
+    <!--<task:scheduler id="myScheduler"/>-->
 
-    <bean id="xmlTask" class="org.yhx.spring.deepmind.scheduler.taskScheduler.XMLSimpleTaskScheduler"></bean>
-    <bean id="annotationTask" class="org.yhx.spring.deepmind.scheduler.taskScheduler.SimpleTaskScheduler"></bean>
+    <!--<bean id="xmlTask" class="org.yhx.spring.deepmind.scheduler.taskScheduler.XMLSimpleTaskScheduler"></bean>-->
+    <!--<bean id="annotationTask" class="org.yhx.spring.deepmind.scheduler.taskScheduler.SimpleTaskScheduler"></bean>-->
 </beans>
