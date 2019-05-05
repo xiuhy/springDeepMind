@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd ">
+
+    <context:component-scan base-package="org.yhx.learning.spring.ioc.domain"/>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:application-setting"></property>
+    </bean>
+
+    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key="org.yhx.learning.spring.cache.spel.first.ioc.domain.Car" value="org.yhx.learning.spring.cache.spel.first.ioc.domain.CustomerProperty"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="car" class="org.yhx.learning.spring.ioc.factory.CarFactoryBean" p:carInfo="mitat,150,34"/>
+
+    <bean id="car2" class="org.yhx.learning.spring.ioc.domain.Car" p:brand="BMW" p:maxSpeed="100" p:price="3400.3453"/>
+    <bean class="org.yhx.learning.spring.ioc.context.ApplicationEventPublisherTest"/>
+    <bean class="org.yhx.learning.spring.ioc.context.TestApplicationContextListener"/>
+
+    <bean id="magicBoss" class="org.yhx.learning.spring.ioc.domain.MagicBoss">
+        <lookup-method name="getCar" bean="car2"/>
+    </bean>
+
+    <bean id="magicBoss2" class="org.yhx.learning.spring.ioc.domain.MagicBoss">
+        <replaced-method replacer="methodReplace1" name="getCar"/>
+    </bean>
+
+    <bean id="methodReplace1"  class="org.yhx.learning.spring.ioc.domain.MethodReplaceBoss"/>
+
+    <!--bean 之间依赖关系-->
+    <!--继承-->
+    <bean id="MZD_bean" abstract="true" class="org.yhx.learning.spring.ioc.domain.Car"
+          p:brand="MZD" p:maxSpeed="300" p:price="100"/>
+    <bean id="MZD_bean2" parent="MZD_bean"
+          p:brand="mx-5"/>
+    <!--依赖-->
+    <bean id="boss1" class="org.yhx.learning.spring.ioc.domain.Boss" >
+        <property name="carId">
+            <idref bean="car_dependece"></idref>
+        </property>
+    </bean>
+    <bean id="car_dependece" class="org.yhx.learning.spring.ioc.domain.Car"
+          p:brand="MZD" p:maxSpeed="100" p:price="3400.3453"/>
+
+    <!--集合属性-->
+
+    <!--集合bean-->
+
+    <util:list id="list1" list-class="java.util.ArrayList">
+            <value>1</value>
+            <value>2</value>
+            <value>3</value>
+    </util:list>
+
+    <util:set id="set1" set-class="java.util.TreeSet">
+        <value>a</value>
+        <value>a3</value>
+        <value>a2</value>
+        <value>a</value>
+    </util:set>
+
+    <!--<util:constant static-field="java.lang.String"  id="constant2" />-->
+
+    <!--自定义properties-->
+    <bean id="editorProperty" class="org.yhx.learning.spring.ioc.domain.Boss">
+        <property name="car">
+            <value>miata,200,10000</value>
+        </property>
+    </bean>
+
+    <!--property-placehodler-->
+    <bean id="car-placeholder" class="org.yhx.learning.spring.ioc.domain.Car"
+          p:brand="${car-brand}" p:maxSpeed="${car-maxSpeed}" p:price="${car-price}"/>
+</beans>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="exceptionWaiter" class="org.yhx.learning.spring.aop.domain.ThrowsWaiter"/>
+    <bean id="target" class="org.yhx.learning.spring.aop.domain.NaviWaiter"/>
+    <bean id="beforeAdvice" class="org.yhx.learning.spring.aop.domain.WaiterAdvice"/>
+    <bean id="exceptionAdvice" class="org.yhx.learning.spring.aop.demo.ExceptionAdvice"/>
+    <!--proxyFactoryBean-->
+    <bean id="waiterProxy" class="org.springframework.aop.framework.ProxyFactoryBean"
+     p:target-ref="target" p:interceptorNames="beforeAdvice" p:proxyInterfaces="org.yhx.learning.spring.aop.adviceAPI.Waiter"/>
+    <!--autoProxyCreator-->
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator"
+    p:beanNames="*target" p:interceptorNames="beforeAdvice,exceptionAdvice"></bean>
+
+
+    <bean id="exceptionProxy" class="org.springframework.aop.framework.ProxyFactoryBean"
+          p:target-ref="exceptionWaiter" p:interceptorNames="exceptionAdvice" p:proxyTargetClass="true"/>
+
+
+    <!--introduction start-->
+
+        <bean id="introductionAdvice" class="org.yhx.learning.spring.aop.intruduction.demo.ControablePerformanceMonitor" />
+        <bean id="introdcutionProxy" class="org.springframework.aop.framework.ProxyFactoryBean"
+        p:target-ref="target" p:interfaces="org.yhx.learning.spring.cache.spel.first.aop.intruduction.demo.Monitor"
+        p:interceptorNames="introductionAdvice" p:optimize="true">
+
+        </bean>
+    <!--introduction end-->
+
+        <bean id="waiterStaticAdvisor" class="org.yhx.learning.spring.aop.advisor.WaiterAdvisor"
+        p:advice-ref="beforeAdvice"/>
+
+         <!--advisor 通过proxyFactoryBean 实现-->
+        <bean id="staticAdisorProxy" class="org.springframework.aop.framework.ProxyFactoryBean"
+        p:target-ref="target"  p:interfaces="org.yhx.learning.spring.aop.adviceAPI.Waiter">
+            <property name="interceptorNames">
+                <list>
+                    <value>waiterStaticAdvisor</value>
+                </list>
+            </property>
+        </bean>
+
+    <!--advisor通过AutoProxyCreator 自动代理-->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"></bean>
+</beans>
