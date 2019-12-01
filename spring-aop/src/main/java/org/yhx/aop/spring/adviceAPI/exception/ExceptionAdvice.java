@@ -1,4 +1,4 @@
-package org.yhx.aop.spring.adviceAPI;
+package org.yhx.aop.spring.adviceAPI.exception;
 
 import org.springframework.aop.ThrowsAdvice;
 

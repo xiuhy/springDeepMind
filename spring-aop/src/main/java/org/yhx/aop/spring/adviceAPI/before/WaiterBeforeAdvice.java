@@ -1,10 +1,10 @@
-package org.yhx.aop.spring.adviceAPI;
+package org.yhx.aop.spring.adviceAPI.before;
 
 import org.springframework.aop.MethodBeforeAdvice;
 
 import java.lang.reflect.Method;
 
-public class WaiterAdvice implements MethodBeforeAdvice {
+public class WaiterBeforeAdvice implements MethodBeforeAdvice {
 
     /**
      * Callback before a given method is invoked.

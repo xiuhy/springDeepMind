@@ -1,16 +1,16 @@
-package org.yhx.aop.spring.adviceAPI;
+package org.yhx.aop.spring.adviceAPI.before;
 
 import org.springframework.aop.BeforeAdvice;
 import org.springframework.aop.framework.ProxyFactory;
-import org.yhx.aop.spring.domain.NaviWaiter;
-import org.yhx.aop.spring.domain.Waiter;
+import org.yhx.aop.base.NaviWaiter;
+import org.yhx.aop.base.Waiter;
 
 public class BeforeAdviceMain {
 
     public static void main(String[] args){
 
         Waiter waiter=new NaviWaiter();
-        BeforeAdvice advice = new WaiterAdvice();
+        BeforeAdvice advice = new WaiterBeforeAdvice();
        ProxyFactory proxyFactory=new ProxyFactory(waiter);
        proxyFactory.addAdvice(advice);
        proxyFactory.setOptimize(true);

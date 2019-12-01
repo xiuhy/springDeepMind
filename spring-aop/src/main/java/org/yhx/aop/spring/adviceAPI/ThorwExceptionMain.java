@@ -2,7 +2,7 @@ package org.yhx.aop.spring.adviceAPI;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.yhx.aop.spring.domain.ThrowsWaiter;
+import org.yhx.aop.base.ThrowsWaiter;
 
 public class ThorwExceptionMain {
 

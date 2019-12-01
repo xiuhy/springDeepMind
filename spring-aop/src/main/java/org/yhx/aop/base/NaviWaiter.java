@@ -1,6 +1,6 @@
-package org.yhx.aop.spring.domain;
+package org.yhx.aop.base;
 
-public class NaviWaiter implements  Waiter {
+public class NaviWaiter implements Waiter {
     public void greetTo(String name) {
 
         System.out.println("greet to "+name);

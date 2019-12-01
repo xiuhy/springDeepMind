@@ -1,4 +1,4 @@
-package org.yhx.aop.spring.intruduction.demo;
+package org.yhx.aop.spring.intruduction;
 
 public interface Monitor   {
 

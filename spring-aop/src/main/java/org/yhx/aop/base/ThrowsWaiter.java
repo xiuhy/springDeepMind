@@ -1,14 +1,15 @@
-package org.yhx.aop.spring.domain;
+package org.yhx.aop.base;
+
 
 //测试异常拦截
-public class ThrowsWaiter implements  Waiter {
+public class ThrowsWaiter implements Waiter {
 
     public void greetTo(String name) {
-        throw  new RuntimeException("以外的异常");
+        throw  new RuntimeException("sorry "+name+", i am sick ");
     }
 
     public void serverTo(String name) {
-        throw  new UnsupportedOperationException("sql异常");
+        throw  new UnsupportedOperationException("sorry "+name+", i am boss ");
     }
 
     public void hasError() {

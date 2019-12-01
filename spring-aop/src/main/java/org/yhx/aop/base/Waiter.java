@@ -1,4 +1,4 @@
-package org.yhx.aop.spring.domain;
+package org.yhx.aop.base;
 
 public interface Waiter {
 

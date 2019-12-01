@@ -2,7 +2,7 @@ package org.yhx.aop.spring.advisor;
 
 import org.springframework.aop.ClassFilter;
 import org.springframework.aop.support.StaticMethodMatcherPointcutAdvisor;
-import org.yhx.aop.spring.domain.Waiter;
+import org.yhx.aop.base.Waiter;
 
 import java.lang.reflect.Method;
 
