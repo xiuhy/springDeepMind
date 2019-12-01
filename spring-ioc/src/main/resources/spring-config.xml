@@ -17,7 +17,7 @@
     <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
         <property name="customEditors">
             <map>
-                <entry key="org.yhx.learning.spring.cache.spel.first.ioc.domain.Car" value="org.yhx.learning.spring.cache.spel.first.ioc.domain.CustomerProperty"/>
+                <entry key="org.yhx.aop.learning.spring.cache.spel.first.ioc.domain.Car" value="org.yhx.aop.learning.spring.cache.spel.first.ioc.domain.CustomerProperty"/>
             </map>
         </property>
     </bean>
