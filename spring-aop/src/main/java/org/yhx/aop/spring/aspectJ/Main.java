@@ -1,8 +1,10 @@
 package org.yhx.aop.spring.aspectJ;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
-import org.yhx.aop.base.Waiter;
+import org.yhx.aop.base.*;
 
 /**
  *  通过 AspectJ 实现aop
@@ -20,24 +22,27 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //通过代码代理 aspectJ
-//        Waiter target=new NaviWaiter();
-//        AspectJProxyFactory aspectJProxyFactory=new AspectJProxyFactory(target);
-//        aspectJProxyFactory.addAspect(PreGrettingAspect.class);
-//        Waiter waiterProxy= aspectJProxyFactory.getProxy();
-//        waiterProxy.serverTo("hello aspectJ");
-
-
         //通过schema 配置文件完成
-        ApplicationContext applicationContext = new FileSystemXmlApplicationContext(
-                "F:\\IDEA_WORKSPACE\\springDeepMind\\spring-aop\\src\\main\\java\\org\\yhx\\learning\\" +
-                        "spring\\aop\\aspectJ\\spring-aop-config.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-aop-aspectj.xml");
         Waiter target = applicationContext.getBean("target", Waiter.class);
         target.serverTo("test");
-        System.out.println("next will throw a exception");
         target.hasError();
-        System.out.println("next will process afterReturning");
+        System.out.println("----------------next will process afterReturning----------------");
         System.out.println(target.whereIs(100));
         System.out.println(target.whereIs(2));
+        System.out.println("----------------next will test args pointcut----------------");
+        BaseArg basearg=new BaseArg();
+        basearg.setData("baseArg");
+
+        SuperArg1 superArg1=new SuperArg1();
+        superArg1.setData("superArg1");
+
+        SuperArg2 superArg2=new SuperArg2();
+        superArg2.setData("superArg2");
+
+        SuperArg3 superArg3=new SuperArg3();
+        superArg3.setData("superArg2");
+
+        target.testArgAop(superArg3);
     }
 }

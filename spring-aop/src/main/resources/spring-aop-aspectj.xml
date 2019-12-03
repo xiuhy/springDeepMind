@@ -9,8 +9,8 @@
 
     <aop:aspectj-autoproxy proxy-target-class="true"/>
     <!--通过注解扫描aop对象-->
-    <context:component-scan base-package="org.yhx.learning.spring.aop.aspectJ"/>
+    <context:component-scan base-package="org.yhx.aop.spring.aspectJ"/>
 
-    <bean id="target" class="org.yhx.aop.spring.domain.NaviWaiter"/>
+    <bean id="target" class="org.yhx.aop.base.NaviWaiter"/>
     <!--<bean id="aspectJByXml" class="PreGrettingAspect"></bean>-->
 </beans>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/pom/pom.iml" filepath="$PROJECT_DIR$/pom/pom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-aop/spring-aop.iml" filepath="$PROJECT_DIR$/spring-aop/spring-aop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cache/spring-cache.iml" filepath="$PROJECT_DIR$/spring-cache/spring-cache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-dao/spring-dao.iml" filepath="$PROJECT_DIR$/spring-dao/spring-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-ioc/spring-ioc.iml" filepath="$PROJECT_DIR$/spring-ioc/spring-ioc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-resource/spring-resource.iml" filepath="$PROJECT_DIR$/spring-resource/spring-resource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-spel/spring-spel.iml" filepath="$PROJECT_DIR$/spring-spel/spring-spel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-web/spring-web.iml" filepath="$PROJECT_DIR$/spring-web/spring-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/springDeepMind.iml" filepath="$PROJECT_DIR$/.idea/springDeepMind.iml" />
+    </modules>
+  </component>
+</project>

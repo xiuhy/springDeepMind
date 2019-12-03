@@ -10,6 +10,7 @@
 
     <properties>
         <spring.version>4.3.18.RELEASE</spring.version>
+        <jdk.version>1.8</jdk.version>
     </properties>
 
     <dependencyManagement>
@@ -178,4 +179,12 @@
         <module>../spring-spel</module>
         <module>../spring-cache</module>
     </modules>
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                -->
+<!--            </plugin>-->
+<!--        </plugins>-->
+
+<!--    </build>-->
 </project>
